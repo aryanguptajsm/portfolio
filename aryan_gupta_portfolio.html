@@ -426,13 +426,5 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 4re
   <div class="footer-cr">Built with ❤️ using HTML + CSS + JS</div>
 </footer>
 
-<script>
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible')}
-  })
-},{threshold:0.1,rootMargin:'0px 0px -40px 0px'})
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
-</script>
 </body>
 </html>

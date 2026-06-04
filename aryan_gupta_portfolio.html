@@ -8,44 +8,6 @@
 <style>
 
 
-/* TIMELINE */
-#experience{background:var(--bg2)}
-.timeline{position:relative;max-width:700px}
-.timeline::before{content:'';position:absolute;left:18px;top:10px;bottom:0;width:1px;background:linear-gradient(var(--border2),transparent)}
-.tl-item{display:flex;gap:2rem;margin-bottom:3rem;position:relative}
-.tl-dot{width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:0.8rem;z-index:1}
-.tl-dot.active{background:var(--acc2);border-color:var(--acc);box-shadow:0 0 20px rgba(124,90,243,0.4)}
-.tl-content{flex:1}
-.tl-role{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:0.3rem}
-.tl-company{color:var(--acc3);font-size:0.88rem;font-weight:600;margin-bottom:0.3rem}
-.tl-period{font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--dim);margin-bottom:0.7rem}
-.tl-desc{color:var(--muted);font-size:0.9rem;line-height:1.7}
-
-/* CONTACT */
-#contact{background:var(--bg)}
-.contact-inner{max-width:640px}
-.contact-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}
-.contact-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.5rem;text-decoration:none;display:flex;flex-direction:column;gap:0.8rem;transition:all 0.25s}
-.contact-card:hover{border-color:var(--border2);transform:translateY(-3px)}
-.cc-icon{font-size:1.5rem}
-.cc-label{font-size:0.78rem;color:var(--dim);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.08em}
-.cc-value{font-size:0.95rem;color:var(--text);font-weight:600}
-.cc-sub{font-size:0.82rem;color:var(--muted)}
-
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center}
-.footer-name{font-family:'Syne',sans-serif;font-weight:700;font-size:0.9rem;color:var(--muted)}
-.footer-cr{font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--dim)}
-
-/* MOBILE */
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-links{display:none}
-  section,#hero{padding:5rem 1.5rem}
-  .about-grid{grid-template-columns:1fr}
-  .contact-cards{grid-template-columns:1fr}
-  footer{flex-direction:column;gap:0.5rem;padding:1.5rem}
-}
 
 /* ANIMATE ON SCROLL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease}

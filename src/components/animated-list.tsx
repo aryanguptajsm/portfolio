@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect, useCallback, ReactNode, MouseEventHandler, UIEvent } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
+import type { ReactNode, MouseEventHandler, UIEvent } from 'react';
 import { motion, useInView } from 'motion/react';
 import './AnimatedList.css';
 
@@ -30,8 +31,8 @@ const AnimatedItem: React.FC<AnimatedItemProps> = ({ children, delay = 0, index,
 };
 
 interface AnimatedListProps {
-    items?: string[];
-    onItemSelect?: (item: string, index: number) => void;
+    items?: ReactNode[];
+    onItemSelect?: (item: ReactNode, index: number) => void;
     showGradients?: boolean;
     enableArrowNavigation?: boolean;
     className?: string;
@@ -41,23 +42,7 @@ interface AnimatedListProps {
 }
 
 const AnimatedList: React.FC<AnimatedListProps> = ({
-    items = [
-        'Item 1',
-        'Item 2',
-        'Item 3',
-        'Item 4',
-        'Item 5',
-        'Item 6',
-        'Item 7',
-        'Item 8',
-        'Item 9',
-        'Item 10',
-        'Item 11',
-        'Item 12',
-        'Item 13',
-        'Item 14',
-        'Item 15'
-    ],
+    items = [],
     onItemSelect,
     showGradients = true,
     enableArrowNavigation = true,
@@ -77,7 +62,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
     }, []);
 
     const handleItemClick = useCallback(
-        (item: string, index: number) => {
+        (item: ReactNode, index: number) => {
             setSelectedIndex(index);
             if (onItemSelect) {
                 onItemSelect(item, index);
@@ -153,7 +138,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
                         onClick={() => handleItemClick(item, index)}
                     >
                         <div className={`item ${selectedIndex === index ? 'selected' : ''} ${itemClassName}`}>
-                            <p className="item-text">{item}</p>
+                            {item}
                         </div>
                     </AnimatedItem>
                 ))}

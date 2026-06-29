@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -9,6 +9,18 @@ import Footer from './components/Footer';
 import './index.css';
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add('dark');
+      document.body.classList.remove('light');
+    } else {
+      document.body.classList.add('light');
+      document.body.classList.remove('dark');
+    }
+  }, [isDark]);
+
   useEffect(() => {
     const reveals = document.querySelectorAll('.reveal');
     const revealOnScroll = () => {
@@ -28,9 +40,11 @@ function App() {
     return () => window.removeEventListener('scroll', revealOnScroll);
   }, []);
 
+  const toggleTheme = () => setIsDark(!isDark);
+
   return (
     <>
-      <Navbar />
+      <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />
       <Projects />

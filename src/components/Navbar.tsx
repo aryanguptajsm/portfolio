@@ -1,7 +1,16 @@
+import GooeyNav from './gooeynav';
+
 interface NavbarProps {
   isDark: boolean;
   toggleTheme: () => void;
 }
+
+const navItems = [
+  { label: 'About', href: '#about' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Experience', href: '#experience' },
+  { label: 'Contact', href: '#contact' },
+];
 
 const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
   const scrollToContact = () => {
@@ -9,14 +18,11 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
   };
 
   return (
-    <nav>
+    <nav className="global-nav">
       <div className="nav-logo">aryan</div>
-      <ul className="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <div className="nav-links-container">
+        <GooeyNav items={navItems} />
+      </div>
       <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
         <button onClick={toggleTheme} className="theme-toggle" aria-label="Toggle Theme">
           {isDark ? '☀️' : '🌙'}

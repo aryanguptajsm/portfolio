@@ -13,7 +13,7 @@ interface AnimatedItemProps {
 
 const AnimatedItem: React.FC<AnimatedItemProps> = ({ children, delay = 0, index, onMouseEnter, onClick }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const inView = useInView(ref, { amount: 0.5, once: false });
+    const inView = useInView(ref, { amount: 0.1, once: true });
     return (
         <motion.div
             ref={ref}
@@ -45,7 +45,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
     items = [],
     onItemSelect,
     showGradients = true,
-    enableArrowNavigation = true,
+    enableArrowNavigation = false,
     className = '',
     itemClassName = '',
     displayScrollbar = true,

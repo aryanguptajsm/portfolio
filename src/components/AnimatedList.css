@@ -5,15 +5,18 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .scroll-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   overflow-y: auto;
-  padding: 1rem;
+  padding: 1.5rem;
   max-height: 80vh;
+  width: 100%;
 }
 
 .scroll-list.no-scrollbar::-webkit-scrollbar {
@@ -48,5 +51,7 @@
 
 .item {
   width: 100%;
+  max-width: 650px;
   height: 100%;
+  margin: 0 auto;
 }

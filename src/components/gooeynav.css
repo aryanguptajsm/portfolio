@@ -1,4 +1,8 @@
 :root {
+    --color-1: var(--green, #10B981);
+    --color-2: var(--teal, #14B8A6);
+    --color-3: var(--amber, #F59E0B);
+    --color-4: var(--rose, #F43F5E);
     --linear-ease: linear(0,
             0.068,
             0.19 2.7%,
@@ -113,7 +117,7 @@
 }
 
 .gooey-nav-container .effect.filter {
-    filter: blur(7px) contrast(100) blur(0);
+    filter: blur(8px) contrast(30);
     mix-blend-mode: lighten;
 }
 

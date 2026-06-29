@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import './GooeyNav.css';
+import './gooeynav.css';
 
 interface GooeyNavItem {
     label: string;
@@ -110,8 +110,8 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     };
 
     const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, index: number) => {
-        const liEl = e.currentTarget;
-        if (activeIndex === index) return;
+        const liEl = e.currentTarget.closest('li');
+        if (!liEl || activeIndex === index) return;
 
         setActiveIndex(index);
         updateEffectPosition(liEl);
@@ -136,15 +136,7 @@ const GooeyNav: React.FC<GooeyNavProps> = ({
     const handleKeyDown = (e: React.KeyboardEvent<HTMLAnchorElement>, index: number) => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
-            const liEl = e.currentTarget.parentElement;
-            if (liEl) {
-                handleClick(
-                    {
-                        currentTarget: liEl
-                    } as React.MouseEvent<HTMLAnchorElement>,
-                    index
-                );
-            }
+            handleClick(e as any, index);
         }
     };
 

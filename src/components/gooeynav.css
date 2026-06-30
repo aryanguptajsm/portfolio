@@ -1,8 +1,10 @@
 :root {
-    --color-1: var(--acc2, #374151);
-    --color-2: var(--acc2, #374151);
-    --color-3: var(--acc2, #374151);
-    --color-4: var(--acc2, #374151);
+    --goo-pill-bg: var(--acc2);
+    --goo-text-active: var(--bg);
+    --color-1: var(--acc2);
+    --color-2: var(--acc2);
+    --color-3: var(--acc2);
+    --color-4: var(--acc2);
     --linear-ease: linear(0,
             0.068,
             0.19 2.7%,
@@ -27,6 +29,15 @@
             0.995 68%,
             1.001 85%,
             1);
+}
+
+.dark {
+    --goo-pill-bg: white;
+    --goo-text-active: black;
+    --color-1: var(--green, #ffffff);
+    --color-2: var(--teal, #e5e5e5);
+    --color-3: var(--amber, #fcfcfc);
+    --color-4: var(--rose, #ffffff);
 }
 
 .gooey-nav-container {
@@ -78,7 +89,7 @@
     position: absolute;
     inset: 0;
     border-radius: 10px;
-    background: var(--acc2);
+    background: var(--goo-pill-bg);
     opacity: 0;
     transform: scale(0);
     transition: all 0.3s ease;
@@ -86,7 +97,7 @@
 }
 
 .gooey-nav-container nav ul li.active {
-    color: var(--bg);
+    color: var(--goo-text-active);
     text-shadow: none;
 }
 
@@ -114,7 +125,7 @@
 }
 
 .gooey-nav-container .effect.text.active {
-    color: var(--bg);
+    color: var(--goo-text-active);
 }
 
 .gooey-nav-container .effect.filter {
@@ -125,7 +136,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--acc2);
+    background: var(--goo-pill-bg);
     transform: scale(0);
     opacity: 0;
     z-index: -1;

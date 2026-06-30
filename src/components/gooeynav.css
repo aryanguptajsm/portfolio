@@ -31,15 +31,6 @@
             1);
 }
 
-.dark {
-    --goo-pill-bg: white;
-    --goo-text-active: black;
-    --color-1: var(--green, #ffffff);
-    --color-2: var(--teal, #e5e5e5);
-    --color-3: var(--amber, #fcfcfc);
-    --color-4: var(--rose, #ffffff);
-}
-
 .gooey-nav-container {
     position: relative;
 }

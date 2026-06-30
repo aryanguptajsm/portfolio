@@ -1,8 +1,8 @@
 :root {
-    --color-1: var(--green, #10B981);
-    --color-2: var(--teal, #14B8A6);
-    --color-3: var(--amber, #F59E0B);
-    --color-4: var(--rose, #F43F5E);
+    --color-1: var(--green, #ffffff);
+    --color-2: var(--teal, #e5e5e5);
+    --color-3: var(--amber, #fcfcfc);
+    --color-4: var(--rose, #ffffff);
     --linear-ease: linear(0,
             0.068,
             0.19 2.7%,
@@ -48,7 +48,7 @@
     position: relative;
     z-index: 3;
     color: white;
-    text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
+  text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
 }
 
 .gooey-nav-container nav ul li {

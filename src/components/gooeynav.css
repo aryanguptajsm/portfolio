@@ -1,8 +1,8 @@
 :root {
-    --color-1: var(--green, #ffffff);
-    --color-2: var(--teal, #e5e5e5);
-    --color-3: var(--amber, #fcfcfc);
-    --color-4: var(--rose, #ffffff);
+    --color-1: var(--acc2, #374151);
+    --color-2: var(--acc2, #374151);
+    --color-3: var(--acc2, #374151);
+    --color-4: var(--acc2, #374151);
     --linear-ease: linear(0,
             0.068,
             0.19 2.7%,
@@ -47,8 +47,7 @@
     margin: 0;
     position: relative;
     z-index: 3;
-    color: white;
-  text-shadow: 0 1px 1px hsl(205deg 30% 10% / 0.2);
+    color: var(--muted);
 }
 
 .gooey-nav-container nav ul li {
@@ -60,7 +59,7 @@
         color 0.3s ease,
         box-shadow 0.3s ease;
     box-shadow: 0 0 0.5px 1.5px transparent;
-    color: white;
+    color: var(--muted);
 }
 
 .gooey-nav-container nav ul li a {
@@ -71,7 +70,7 @@
 }
 
 .gooey-nav-container nav ul li:focus-within:has(:focus-visible) {
-    box-shadow: 0 0 0.5px 1.5px white;
+    box-shadow: 0 0 0.5px 1.5px var(--text);
 }
 
 .gooey-nav-container nav ul li::after {
@@ -79,7 +78,7 @@
     position: absolute;
     inset: 0;
     border-radius: 10px;
-    background: white;
+    background: var(--acc2);
     opacity: 0;
     transform: scale(0);
     transition: all 0.3s ease;
@@ -87,7 +86,7 @@
 }
 
 .gooey-nav-container nav ul li.active {
-    color: black;
+    color: var(--bg);
     text-shadow: none;
 }
 
@@ -110,32 +109,23 @@
 }
 
 .gooey-nav-container .effect.text {
-    color: white;
+    color: var(--muted);
     transition: color 0.3s ease;
 }
 
 .gooey-nav-container .effect.text.active {
-    color: black;
+    color: var(--bg);
 }
 
 .gooey-nav-container .effect.filter {
-    filter: blur(8px) contrast(30);
-    mix-blend-mode: lighten;
-}
-
-.gooey-nav-container .effect.filter::before {
-    content: '';
-    position: absolute;
-    inset: -75px;
-    z-index: -2;
-    background: black;
+    filter: url('#goo-nav-filter');
 }
 
 .gooey-nav-container .effect.filter::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: white;
+    background: var(--acc2);
     transform: scale(0);
     opacity: 0;
     z-index: -1;

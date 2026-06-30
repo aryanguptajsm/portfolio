@@ -14,7 +14,7 @@ const Hero = () => {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 50 } },
+    visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 50 } },
   };
 
   return (

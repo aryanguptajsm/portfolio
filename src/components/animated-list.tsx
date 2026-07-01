@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ReactNode } from 'react';
 import { motion } from 'motion/react';
-import './AnimatedList.css';
 
 interface AnimatedListProps {
   children?: ReactNode[];
@@ -12,47 +11,26 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
   children = [],
   className = ''
 }) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: 'spring' as const,
-        stiffness: 80,
-        damping: 15,
-      },
-    },
-  };
-
   return (
-    <motion.div
-      className={`projects-list-container ${className}`}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-    >
+    <div className={`projects-list-container ${className}`}>
       {React.Children.map(children, (child, index) => (
         <motion.div
           key={index}
-          variants={itemVariants}
-          style={{ width: '100%' }}
+          initial={{ scale: 0.7, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{
+            type: 'spring' as const,
+            stiffness: 70,
+            damping: 15,
+            delay: index * 0.05,
+          }}
+          style={{ width: '100%', originX: 0.5, originY: 0.5 }}
         >
           {child}
         </motion.div>
       ))}
-    </motion.div>
+    </div>
   );
 };
 

@@ -90,37 +90,37 @@ const Projects = () => {
         {projects.map((project) => (
           <a
             key={project.id}
-            className="project-row"
+            className="project-card-row"
             href={project.href}
             target="_blank"
             rel="noreferrer"
           >
-            <div className="project-row-left">
+            <div className="project-card-left">
               <div 
-                className="project-row-icon" 
+                className="project-card-icon" 
                 style={{ background: project.iconBg }}
               >
                 {project.icon}
               </div>
-              <div className="project-row-title-area">
-                <span className="project-row-name">{project.name}</span>
+              <div className="project-card-title-area">
+                <span className="project-card-name">{project.name}</span>
                 {project.featured && <span className="feat-badge">Featured</span>}
               </div>
             </div>
             
-            <div className="project-row-desc">
+            <div className="project-card-desc">
               {project.desc}
             </div>
             
-            <div className="project-row-right">
-              <div className="project-row-tags">
+            <div className="project-card-right">
+              <div className="project-card-tags">
                 {project.tags.map((tag) => (
                   <span key={tag} className="tag">{tag}</span>
                 ))}
               </div>
-              <div className="project-row-meta">
+              <div className="project-card-meta">
                 {project.stars && <span>{project.stars}</span>}
-                <span className="project-row-link">View GitHub →</span>
+                <span className="project-card-link">View GitHub →</span>
               </div>
             </div>
           </a>

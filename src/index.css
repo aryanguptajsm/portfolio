@@ -761,6 +761,19 @@ section {
   transition: all 0.25s
 }
 
+.contact-card.border-glow-card {
+  background: transparent;
+  border: none;
+}
+
+.contact-card.border-glow-card .border-glow-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  height: 100%;
+}
+
 .contact-card:hover {
   border-color: var(--border2);
   transform: translateY(-3px);

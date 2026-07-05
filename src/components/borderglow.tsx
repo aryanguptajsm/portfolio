@@ -83,8 +83,10 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
     animated = false,
     colors = ['#c084fc', '#f472b6', '#38bdf8'],
     fillOpacity = 0.5,
+    as: Component = 'div',
+    ...restProps
 }) => {
-    const cardRef = useRef<HTMLDivElement>(null);
+    const cardRef = useRef<any>(null);
 
     const getCenterOfElement = useCallback((el: HTMLElement) => {
         const { width, height } = el.getBoundingClientRect();
@@ -157,7 +159,7 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
     const glowVars = buildGlowVars(glowColor, glowIntensity);
 
     return (
-        <div
+        <Component
             ref={cardRef}
             onPointerMove={handlePointerMove}
             className={`border-glow-card ${className}`}
@@ -171,12 +173,13 @@ const BorderGlow: React.FC<BorderGlowProps> = ({
                 ...glowVars,
                 ...buildGradientVars(colors),
             } as React.CSSProperties}
+            {...restProps}
         >
             <span className="edge-light" />
             <div className="border-glow-inner">
                 {children}
             </div>
-        </div>
+        </Component>
     );
 };
 

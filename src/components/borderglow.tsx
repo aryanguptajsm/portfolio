@@ -1,5 +1,5 @@
-import { useRef, useCallback, useEffect, type ReactNode } from 'react';
-import './BorderGlow.css';
+import React, { useRef, useCallback, useEffect, type ReactNode } from 'react';
+import './borderglow.css';
 
 interface BorderGlowProps {
     children?: ReactNode;
@@ -14,6 +14,8 @@ interface BorderGlowProps {
     animated?: boolean;
     colors?: string[];
     fillOpacity?: number;
+    as?: React.ElementType;
+    [key: string]: any;
 }
 
 function parseHSL(hslStr: string): { h: number; s: number; l: number } {

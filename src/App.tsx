@@ -6,6 +6,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import SmoothCursor from './components/smoothcursor';
 import './index.css';
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
 
   return (
     <>
+      <SmoothCursor />
       <Navbar isDark={isDark} toggleTheme={toggleTheme} />
       <Hero />
       <About />

@@ -4,6 +4,16 @@
   box-sizing: border-box
 }
 
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  
+  input, textarea, select {
+    cursor: text !important;
+  }
+}
+
 :root,
 .light {
   --bg: #FAFAF7;

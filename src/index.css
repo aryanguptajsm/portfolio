@@ -1,15 +1,18 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box
+  box-sizing: border-box;
+  cursor: none !important;
 }
 
 @media (pointer: fine) {
   * {
     cursor: none !important;
   }
-  
-  input, textarea, select {
+
+  input,
+  textarea,
+  select {
     cursor: text !important;
   }
 }

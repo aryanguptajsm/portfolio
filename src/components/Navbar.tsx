@@ -19,7 +19,7 @@ const Navbar = ({ isDark, toggleTheme }: NavbarProps) => {
 
   return (
     <nav className="global-nav">
-      <div className="nav-logo">aryan</div>
+      <div className="nav-logo">Aryan</div>
       <div className="nav-links-container">
         <GooeyNav items={navItems} />
       </div>

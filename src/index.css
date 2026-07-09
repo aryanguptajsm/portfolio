@@ -11,6 +11,10 @@
   box-sizing: border-box;
   cursor: none !important;
   color: rgb(255, 255, 255) !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 @media (pointer: fine) {

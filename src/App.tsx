@@ -194,24 +194,17 @@ function App() {
                 <i />
                 <i />
                 <i />
-                <span>aryan / now</span>
+                <span>currently.txt</span>
               </div>
-              <div className="card-content">
-                <div className="card-kicker">
-                  <span className="card-pulse" />
-                  In the studio
-                </div>
-                <strong>Turning curious ideas into thoughtful experiences.</strong>
-                <p>Exploring the small details that make an interface feel effortless.</p>
-                <div className="card-topics">
-                  <span>UI systems</span>
-                  <span>Motion</span>
-                  <span>Accessibility</span>
-                </div>
-                <div className="card-progress" aria-hidden="true">
-                  <span />
-                </div>
-              </div>
+              <pre aria-label="A code-styled note about Aryan's work">
+                <span className="comment">// a work in progress. always.</span>
+
+<span className="keyword">ideas</span> into <span className="string">interfaces</span>
+
+<span className="comment">explore. create. improve.</span>
+
+<span className="string">Made with curiosity</span>
+              </pre>
             </div>
             <div className="floating-label">Made of ideas &amp; a little caffeine ↗</div>
           </div>

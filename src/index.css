@@ -1,3 +1,8 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+
 :root {
   color-scheme: dark;
   --bg: #101112;
@@ -867,37 +872,7 @@ footer {
     transition: none !important;
   }
 }
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35)
-}
 
-#hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 4rem;
-  position: relative;
-  overflow: hidden
-}
-
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 800px;
-  animation: fadeUp 0.9s ease both;
-  text-align: center;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px)
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0)
-  }
 }
 
 .hero-tag {

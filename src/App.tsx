@@ -65,49 +65,17 @@ function App() {
 
   useEffect(() => {
     const loadProjects = async () => {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 10000);
+
       try {
-        const controller = new AbortController();
-        const timeout = window.setTimeout(() => controller.abort(), 10000);
-
-        try {
-          const response = await fetch(
-            `https://api.github.com/users/${USERNAME}/repos?sort=updated&direction=desc&per_page=100&type=owner`,
-            {
-              signal: controller.signal,
-              headers: { Accept: 'application/vnd.github+json' },
-            }
-          );
-
-          window.clearTimeout(timeout);
-
-          if (!response.ok) {
-            throw new Error(`GitHub request failed: ${response.status}`);
+        const response = await fetch(
+          `https://api.github.com/users/${USERNAME}/repos?sort=updated&direction=desc&per_page=100&type=owner`,
+          {
+            signal: controller.signal,
+            headers: { Accept: 'application/vnd.github+json' },
           }
-
-          const repositories = (await response.json()) as Repo[];
-          if (!Array.isArray(repositories)) {
-            throw new Error('Unexpected repository data.');
-          }
-
-          const selected = repositories
-            .filter(validRepository)
-            .filter((repo) => !repo.fork && !repo.archived)
-            .slice(0, 6);
-
-          if (!selected.length) {
-            setStatus('No recent non-fork, non-archived projects to display. Browse GitHub for more.');
-            return;
-          }
-
-          setProjects(selected);
-          setStatus(
-            `Showing ${selected.length} recently updated public repositories · Forks and archived projects excluded.`
-          );
-        } finally {
-          window.clearTimeout(timeout);
-        }
-
-        return;
+        );
 
         if (!response.ok) {
           throw new Error(`GitHub request failed: ${response.status}`);
@@ -142,6 +110,8 @@ function App() {
           },
         ]);
         setStatus('Live projects are temporarily unavailable. Browse all repositories on GitHub.');
+      } finally {
+        window.clearTimeout(timeout);
       }
     };
 

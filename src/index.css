@@ -310,12 +310,16 @@ h1 em {
 }
 
 .code-card {
-      width: 340px; max-width: 90%; padding: 22px;
-      border: 1px solid #ffffff26; border-radius: 20px;
-      background: linear-gradient(135deg, #29272f, #191a1cf5);
-      box-shadow: 0 35px 80px #0006;
-      transform: rotate(-6deg); animation: float 7s ease-in-out infinite;
-    }
+  width: 340px;
+  max-width: 90%;
+  padding: 22px;
+  border: 1px solid #ffffff26;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #29272f, #191a1cf5);
+  box-shadow: 0 35px 80px #0006;
+  transform: rotate(-6deg);
+  animation: float 7s ease-in-out infinite;
+}
 
 .window-bar {
   display: flex;
@@ -341,16 +345,74 @@ h1 em {
   color: var(--muted);
 }
 
-.code-card pre {
-  font: 13px/1.9 ui-monospace, SFMono-Regular, Consolas, monospace;
-  margin: 24px 0 12px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+.card-content {
+  padding: 22px 2px 4px;
 }
 
-.code-card .keyword { color: var(--purple); }
-    .code-card .string { color: var(--lime); }
-    .code-card .comment { color: var(--muted); }
+.card-kicker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--lime);
+  font: 600 10px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.card-pulse {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 12px rgba(215, 250, 120, 0.75);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.card-content strong {
+  display: block;
+  margin-top: 17px;
+  font-size: 23px;
+  line-height: 1.1;
+  letter-spacing: -0.055em;
+}
+
+.card-content p {
+  margin: 13px 0 18px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.card-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.card-topics span {
+  border: 1px solid rgba(185, 162, 255, 0.34);
+  border-radius: 100px;
+  background: rgba(185, 162, 255, 0.1);
+  padding: 4px 8px;
+  color: #ded5ff;
+  font: 10px/1.2 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.card-progress {
+  height: 4px;
+  margin-top: 22px;
+  overflow: hidden;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.card-progress span {
+  display: block;
+  width: 72%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--purple), var(--lime));
+}
 
 .floating-label {
   position: absolute;

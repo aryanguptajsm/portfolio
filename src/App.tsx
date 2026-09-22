@@ -194,23 +194,24 @@ function App() {
                 <i />
                 <i />
                 <i />
-                <span>hello-world.js</span>
+                <span>aryan / now</span>
               </div>
-              <pre>
-                <span className="comment">// A work in progress. Always.</span>
-
-<span className="keyword">const</span> aryan = {'{'}
-  name: <span className="string">"Aryan"</span>,
-  github: <span className="string">"aryanguptajsm"</span>,
-  space: <span className="string">"code + creativity"</span>
-{'}'};
-
-<span className="keyword">while</span> (curious) {'{'}
-  explore();
-  create();
-  improve();
-{'}'}
-              </pre>
+              <div className="card-content">
+                <div className="card-kicker">
+                  <span className="card-pulse" />
+                  In the studio
+                </div>
+                <strong>Turning curious ideas into thoughtful experiences.</strong>
+                <p>Exploring the small details that make an interface feel effortless.</p>
+                <div className="card-topics">
+                  <span>UI systems</span>
+                  <span>Motion</span>
+                  <span>Accessibility</span>
+                </div>
+                <div className="card-progress" aria-hidden="true">
+                  <span />
+                </div>
+              </div>
             </div>
             <div className="floating-label">Made of ideas &amp; a little caffeine ↗</div>
           </div>

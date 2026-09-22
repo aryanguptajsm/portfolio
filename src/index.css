@@ -348,17 +348,9 @@ h1 em {
   overflow-wrap: anywhere;
 }
 
-.code-card .keyword {
-  color: var(--purple);
-}
-
-.code-card .string {
-  color: var(--lime);
-}
-
-.code-card .comment {
-  color: var(--muted);
-}
+.code-card .keyword { color: var(--purple); }
+    .code-card .string { color: var(--lime); }
+    .code-card .comment { color: var(--muted); }
 
 .floating-label {
   position: absolute;

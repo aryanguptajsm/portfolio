@@ -310,16 +310,12 @@ h1 em {
 }
 
 .code-card {
-  width: 340px;
-  max-width: 90%;
-  padding: 22px;
-  border: 1px solid rgba(185, 162, 255, 0.42);
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(41, 39, 47, 0.96), rgba(25, 26, 28, 0.98));
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.04), 0 35px 80px rgba(0, 0, 0, 0.4);
-  transform: rotate(-6deg);
-  animation: float 7s ease-in-out infinite;
-}
+      width: 340px; max-width: 90%; padding: 22px;
+      border: 1px solid #ffffff26; border-radius: 20px;
+      background: linear-gradient(135deg, #29272f, #191a1cf5);
+      box-shadow: 0 35px 80px #0006;
+      transform: rotate(-6deg); animation: float 7s ease-in-out infinite;
+    }
 
 .window-bar {
   display: flex;

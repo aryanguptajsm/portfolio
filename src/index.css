@@ -350,7 +350,7 @@ h1 em {
 .code-card .string { color: var(--lime); }
 .code-card .comment { color: var(--muted); }
 
-.floating-label {
+.floating-label 
   position: absolute;
   right: 0;
   bottom: 66px;

@@ -463,7 +463,7 @@ h1 em {
 
 .project:hover {
   transform: translateY(-7px);
-  border-color: rgba(111, 96, 154, 0.7);
+  border-color: #cbb8fff5;
 }
 
 .project-art {

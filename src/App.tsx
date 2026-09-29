@@ -194,16 +194,20 @@ function App() {
                 <i />
                 <i />
                 <i />
-                <span>currently.txt</span>
+                <span>hello-world.js</span>
               </div>
-              <pre aria-label="A code-styled note about Aryan's work">
-                <span className="comment">// a work in progress. always.</span>
-
-<span className="keyword">ideas</span> into <span className="string">interfaces</span>
-
-<span className="comment">explore. create. improve.</span>
-
-<span className="string">Made with curiosity</span>
+              <pre>
+                <span className="comment">// A work in progress. Always.</span>{'\n\n'}
+                <span className="keyword">const</span> aryan = {'{'}{'\n'}
+                {'  '}name: <span className="string">"Aryan"</span>,{'\n'}
+                {'  '}github: <span className="string">"aryanguptajsm"</span>,{'\n'}
+                {'  '}space: <span className="string">"code + creativity"</span>{'\n'}
+                {'};\n\n'}
+                <span className="keyword">while</span> (curious) {'{'}{'\n'}
+                {'  '}explore();{'\n'}
+                {'  '}create();{'\n'}
+                {'  '}improve();{'\n'}
+                {'}'}
               </pre>
             </div>
             <div className="floating-label">Made of ideas &amp; a little caffeine ↗</div>

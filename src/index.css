@@ -167,7 +167,7 @@ header {
   font-size: 13px;
   font-weight: 600;
   cursor: pointer;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
 
 .menu:hover {

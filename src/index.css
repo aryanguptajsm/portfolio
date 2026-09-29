@@ -157,12 +157,50 @@ header {
 
 .menu {
   display: none;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--surface);
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #ffffff26;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #29272f, #191a1cf5);
   color: var(--text);
-  padding: 9px 14px;
+  padding: 10px 15px 10px 12px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.menu:hover {
+  transform: translateY(-1px);
+  border-color: #b9a2ff80;
+  box-shadow: 0 8px 24px #0004;
+}
+
+.menu-icon {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--lime);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.menu-icon line {
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: transform 0.2s ease, opacity 0.15s ease;
+}
+
+.menu[aria-expanded='true'] .menu-icon-top {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.menu[aria-expanded='true'] .menu-icon-middle {
+  opacity: 0;
+}
+
+.menu[aria-expanded='true'] .menu-icon-bottom {
+  transform: translateY(-5px) rotate(-45deg);
 }
 
 .hero {
@@ -391,23 +429,47 @@ h1 em {
 
 .ticker {
   border-block: 1px solid var(--line);
-  padding-block: 20px;
+  padding-block: 18px;
   overflow: hidden;
   color: var(--muted);
+  background: linear-gradient(90deg, #b9a2ff08, transparent 35%, #d7fa7808);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
 }
 
-.ticker-inner {
+.ticker-track {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px 28px;
+  width: max-content;
+  animation: ticker-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.ticker-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 28px;
+  padding-right: 28px;
   font: 12px ui-monospace, monospace;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.ticker b {
+.ticker-group b {
   color: var(--purple);
+  font-size: 15px;
+  text-shadow: 0 0 14px #b9a2ff70;
+}
+
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-scroll {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .section {
@@ -737,7 +799,7 @@ footer {
   }
 
   .menu {
-    display: block;
+    display: inline-flex;
   }
 
   .nav-links {
@@ -842,9 +904,10 @@ footer {
     font-size: 110px;
   }
 
-  .ticker-inner {
+  .ticker-group {
     font-size: 10px;
-    justify-content: center;
+    gap: 20px;
+    padding-right: 20px;
   }
 }
 
@@ -858,6 +921,22 @@ footer {
   *::after {
     animation: none !important;
     transition: none !important;
+  }
+
+  .ticker-track {
+    width: auto;
+    will-change: auto;
+  }
+
+  .ticker-group[aria-hidden='true'] {
+    display: none;
+  }
+
+  .ticker-group {
+    width: 100%;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    white-space: normal;
   }
 }
 

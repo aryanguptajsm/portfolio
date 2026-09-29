@@ -135,9 +135,15 @@ function App() {
             className="menu"
             aria-expanded={menuOpen}
             aria-controls="nav-links"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             onClick={() => setMenuOpen((open) => !open)}
           >
-            {menuOpen ? 'Close' : 'Menu'}
+            <svg className="menu-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <line className="menu-icon-top" x1="4" y1="7" x2="20" y2="7" />
+              <line className="menu-icon-middle" x1="4" y1="12" x2="20" y2="12" />
+              <line className="menu-icon-bottom" x1="4" y1="17" x2="20" y2="17" />
+            </svg>
+            <span aria-hidden="true">{menuOpen ? 'Close' : 'Menu'}</span>
           </button>
 
           <div id="nav-links" className={menuOpen ? 'nav-links open' : 'nav-links'}>
@@ -210,14 +216,18 @@ function App() {
         </section>
 
         <div className="ticker" aria-hidden="true">
-          <div className="container ticker-inner">
-            <span>Ideas into code</span>
-            <b>✳</b>
-            <span>Details matter</span>
-            <b>✳</b>
-            <span>Always exploring</span>
-            <b>✳</b>
-            <span>Build. Learn. Repeat.</span>
+          <div className="ticker-track">
+            {[0, 1].map((copy) => (
+              <div className="ticker-group" key={copy}>
+                <span>Ideas into code</span>
+                <b>✳</b>
+                <span>Details matter</span>
+                <b>✳</b>
+                <span>Always exploring</span>
+                <b>✳</b>
+                <span>Build. Learn. Repeat.</span>
+              </div>
+            ))}
           </div>
         </div>
 

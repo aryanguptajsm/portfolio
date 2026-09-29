@@ -202,12 +202,7 @@ function App() {
                 {'  '}name: <span className="string">"Aryan"</span>,{'\n'}
                 {'  '}github: <span className="string">"aryanguptajsm"</span>,{'\n'}
                 {'  '}space: <span className="string">"code + creativity"</span>{'\n'}
-                {'};\n\n'}
-                <span className="keyword">while</span> (curious) {'{'}{'\n'}
-                {'  '}explore();{'\n'}
-                {'  '}create();{'\n'}
-                {'  '}improve();{'\n'}
-                {'}'}
+                {'};'}
               </pre>
             </div>
             <div className="floating-label">Made of ideas &amp; a little caffeine ↗</div>

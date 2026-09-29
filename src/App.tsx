@@ -217,8 +217,8 @@ function App() {
 
         <div className="ticker" aria-hidden="true">
           <div className="ticker-track">
-            {[0, 1].map((copy) => (
-              <div className="ticker-group" key={copy} aria-hidden={copy === 1}>
+            {[0, 1, 2, 3].map((copy) => (
+              <div className="ticker-group" key={copy} aria-hidden={copy > 0}>
                 <span>Ideas into code</span>
                 <b>✳</b>
                 <span>Details matter</span>

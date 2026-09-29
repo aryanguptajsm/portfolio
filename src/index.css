@@ -440,7 +440,7 @@ h1 em {
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker-scroll 32s linear infinite;
+  animation: ticker-scroll 16s linear infinite;
   will-change: transform;
 }
 
@@ -468,7 +468,7 @@ h1 em {
 
 @keyframes ticker-scroll {
   to {
-    transform: translateX(-50%);
+    transform: translateX(-25%);
   }
 }
 

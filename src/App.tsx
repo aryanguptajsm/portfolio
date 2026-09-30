@@ -37,25 +37,21 @@ function moveTitleAwayFromPointer(event: PointerEvent<HTMLHeadingElement>) {
   if (event.pointerType !== 'mouse') return;
 
   const title = event.currentTarget;
-  const lines = title.querySelectorAll<HTMLElement>('.title-line');
+  const mover = title.querySelector<HTMLElement>('.title-mover');
+  if (!mover) return;
 
-  lines.forEach((line) => {
-    const bounds = line.getBoundingClientRect();
-    const dx = bounds.left + bounds.width / 2 - event.clientX;
-    const dy = bounds.top + bounds.height / 2 - event.clientY;
-    const distance = Math.max(Math.hypot(dx, dy), 1);
-    const strength = (1 - Math.min(distance / 320, 1)) * 18;
+  const bounds = title.getBoundingClientRect();
+  const pointerX = (event.clientX - bounds.left) / bounds.width - 0.5;
+  const pointerY = (event.clientY - bounds.top) / bounds.height - 0.5;
 
-    line.style.setProperty('--repel-x', `${(dx / distance) * strength}px`);
-    line.style.setProperty('--repel-y', `${(dy / distance) * strength}px`);
-  });
+  mover.style.setProperty('--title-x', `${-pointerX * 34}px`);
+  mover.style.setProperty('--title-y', `${-pointerY * 28}px`);
 }
 
 function resetTitlePosition(event: PointerEvent<HTMLHeadingElement>) {
-  event.currentTarget.querySelectorAll<HTMLElement>('.title-line').forEach((line) => {
-    line.style.setProperty('--repel-x', '0px');
-    line.style.setProperty('--repel-y', '0px');
-  });
+  const mover = event.currentTarget.querySelector<HTMLElement>('.title-mover');
+  mover?.style.setProperty('--title-x', '0px');
+  mover?.style.setProperty('--title-y', '0px');
 }
 
 function App() {
@@ -198,9 +194,11 @@ function App() {
               onPointerMove={moveTitleAwayFromPointer}
               onPointerLeave={resetTitlePosition}
             >
-              <span className="title-line">Hey, I'm Aryan.</span>
-              <span className="title-line">Ideas into</span>
-              <span className="title-line title-line-accent"><em>interfaces.</em></span>
+              <span className="title-mover">
+                <span className="title-line">Hey, I'm Aryan.</span>
+                <span className="title-line">Ideas into</span>
+                <span className="title-line title-line-accent"><em>interfaces.</em></span>
+              </span>
             </h1>
             <p className="hero-copy">
               Welcome to my corner of the internet. A space for the things I build, the ideas I

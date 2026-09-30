@@ -247,8 +247,14 @@ h1 {
   display: block;
   width: fit-content;
   max-width: 100%;
-  transform: translate3d(var(--repel-x, 0px), var(--repel-y, 0px), 0);
-  transition: transform 180ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.title-mover {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  transform: translate3d(var(--title-x, 0px), var(--title-y, 0px), 0);
+  transition: transform 220ms cubic-bezier(0.2, 0.75, 0.25, 1);
   will-change: transform;
 }
 
@@ -864,11 +870,29 @@ footer {
   }
 }
 
-@media (max-width: 700px) {
-  .container {
-    width: min(100% - 32px, 540px);
+@media (max-width: 860px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+    padding-block: 72px 34px;
+    gap: 12px;
   }
 
+  .hero > div:first-child {
+    max-width: 680px;
+  }
+
+  .visual {
+    min-height: clamp(330px, 55vw, 440px);
+  }
+
+  .about {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 32px;
+  }
+}
+
+@media (max-width: 820px) {
   .nav {
     min-height: 72px;
     flex-wrap: wrap;
@@ -880,16 +904,23 @@ footer {
   }
 
   .nav-links {
+    display: none;
     width: 100%;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 16px 0 22px;
-    display: none;
+    gap: 12px 24px;
+    padding: 10px 0 20px;
   }
 
   .nav-links.open {
     display: flex;
+    animation: hero-enter 220ms ease both;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: min(100% - 32px, 540px);
   }
 
   .hero {
@@ -899,7 +930,7 @@ footer {
   }
 
   h1 {
-    font-size: clamp(53px, 12vw, 80px);
+    font-size: clamp(46px, 11.8vw, 76px);
   }
 
   .hero-copy {
@@ -911,12 +942,12 @@ footer {
   }
 
   .visual {
-    min-height: 390px;
+    min-height: clamp(310px, 92vw, 390px);
   }
 
   .code-card {
-    width: 320px;
-    padding: 22px;
+    width: min(320px, 88vw);
+    padding: clamp(16px, 5vw, 22px);
   }
 
   .code-card pre {
@@ -924,13 +955,13 @@ footer {
   }
 
   .orbit {
-    width: 330px;
-    height: 330px;
+    width: min(330px, 88vw);
+    height: min(330px, 88vw);
   }
 
   .orbit.two {
-    width: 260px;
-    height: 260px;
+    width: min(260px, 70vw);
+    height: min(260px, 70vw);
   }
 
   .floating-label {
@@ -985,6 +1016,58 @@ footer {
     font-size: 10px;
     gap: 20px;
     padding-right: 20px;
+  }
+
+  .contact h2 {
+    font-size: clamp(38px, 10vw, 64px);
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    width: calc(100% - 32px);
+  }
+
+  .intro {
+    max-width: 100%;
+    font-size: 11px;
+    padding: 7px 10px;
+  }
+
+  .actions {
+    align-items: stretch;
+  }
+
+  .actions .button {
+    flex: 1 1 100%;
+    justify-content: space-between;
+  }
+
+  .floating-label {
+    right: 0;
+    bottom: 22px;
+    padding: 10px 13px;
+    font-size: 11px;
+  }
+
+  .asterisk {
+    top: 8px;
+    right: 8px;
+    font-size: 64px;
+  }
+
+  .project-art {
+    height: 180px;
+  }
+
+  .contact {
+    padding: 34px 20px;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .title-mover {
+    will-change: auto;
   }
 }
 

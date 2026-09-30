@@ -37,21 +37,35 @@ function moveTitleAwayFromPointer(event: PointerEvent<HTMLHeadingElement>) {
   if (event.pointerType !== 'mouse') return;
 
   const title = event.currentTarget;
-  const mover = title.querySelector<HTMLElement>('.title-mover');
-  if (!mover) return;
+  const pointedWord = event.target instanceof Element
+    ? event.target.closest<HTMLElement>('.title-word')
+    : null;
+  const activeWord = pointedWord && title.contains(pointedWord) ? pointedWord : null;
 
-  const bounds = title.getBoundingClientRect();
-  const pointerX = (event.clientX - bounds.left) / bounds.width - 0.5;
-  const pointerY = (event.clientY - bounds.top) / bounds.height - 0.5;
+  title.querySelectorAll<HTMLElement>('.title-word').forEach((word) => {
+    if (word !== activeWord) {
+      word.style.setProperty('--word-x', '0px');
+      word.style.setProperty('--word-y', '0px');
+      word.style.setProperty('--word-scale', '1');
+      return;
+    }
 
-  mover.style.setProperty('--title-x', `${-pointerX * 34}px`);
-  mover.style.setProperty('--title-y', `${-pointerY * 28}px`);
+    const bounds = word.getBoundingClientRect();
+    const pointerX = (event.clientX - bounds.left) / Math.max(bounds.width, 1) - 0.5;
+    const pointerY = (event.clientY - bounds.top) / Math.max(bounds.height, 1) - 0.5;
+
+    word.style.setProperty('--word-x', `${-pointerX * 18}px`);
+    word.style.setProperty('--word-y', `${-pointerY * 12}px`);
+    word.style.setProperty('--word-scale', '1.045');
+  });
 }
 
 function resetTitlePosition(event: PointerEvent<HTMLHeadingElement>) {
-  const mover = event.currentTarget.querySelector<HTMLElement>('.title-mover');
-  mover?.style.setProperty('--title-x', '0px');
-  mover?.style.setProperty('--title-y', '0px');
+  event.currentTarget.querySelectorAll<HTMLElement>('.title-word').forEach((word) => {
+    word.style.setProperty('--word-x', '0px');
+    word.style.setProperty('--word-y', '0px');
+    word.style.setProperty('--word-scale', '1');
+  });
 }
 
 function App() {
@@ -194,10 +208,17 @@ function App() {
               onPointerMove={moveTitleAwayFromPointer}
               onPointerLeave={resetTitlePosition}
             >
-              <span className="title-mover">
-                <span className="title-line">Hey, I'm Aryan.</span>
-                <span className="title-line">Ideas into</span>
-                <span className="title-line title-line-accent"><em>interfaces.</em></span>
+              <span className="title-line">
+                <span className="title-word">Hey,</span>{' '}
+                <span className="title-word">I'm</span>{' '}
+                <span className="title-word">Aryan.</span>
+              </span>
+              <span className="title-line">
+                <span className="title-word">Ideas</span>{' '}
+                <span className="title-word">into</span>
+              </span>
+              <span className="title-line title-line-accent">
+                <span className="title-word"><em>interfaces.</em></span>
               </span>
             </h1>
             <p className="hero-copy">

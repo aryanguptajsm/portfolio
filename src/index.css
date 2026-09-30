@@ -26,6 +26,7 @@ html {
 
 body {
   margin: 0;
+  min-width: 320px;
   background: var(--bg);
   color: var(--text);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -136,6 +137,7 @@ header {
   display: flex;
   align-items: center;
   gap: 32px;
+  min-width: 0;
 }
 
 .nav-links a {
@@ -158,14 +160,15 @@ header {
 .menu {
   display: none;
   align-items: center;
-  gap: 9px;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
   border: 1px solid #ffffff26;
-  border-radius: 100px;
+  border-radius: 50%;
   background: linear-gradient(135deg, #29272f, #191a1cf5);
   color: var(--text);
-  padding: 10px 15px 10px 12px;
-  font-size: 13px;
-  font-weight: 600;
+  padding: 0;
   cursor: pointer;
   transition: border-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
 }
@@ -230,6 +233,7 @@ header {
   border-radius: 50%;
   background: var(--lime);
   box-shadow: 0 0 16px rgba(215, 250, 120, 0.7);
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
 h1 {
@@ -237,6 +241,19 @@ h1 {
   letter-spacing: -0.075em;
   font-weight: 800;
   margin-bottom: 28px;
+}
+
+.title-line {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  transform: translate3d(var(--repel-x, 0px), var(--repel-y, 0px), 0);
+  transition: transform 180ms cubic-bezier(0.2, 0.75, 0.25, 1);
+  will-change: transform;
+}
+
+.title-line-accent {
+  color: var(--purple);
 }
 
 h1 em {
@@ -400,6 +417,7 @@ h1 em {
   font-size: 14px;
   transform: rotate(7deg);
   box-shadow: 0 12px 35px rgba(48, 46, 46, 0.25);
+  animation: label-drift 5s ease-in-out infinite;
 }
 
 .asterisk {
@@ -409,6 +427,7 @@ h1 em {
   color: var(--lime);
   font-size: 100px;
   line-height: 1;
+  animation: asterisk-turn 18s linear infinite;
 }
 
 @keyframes orbit {
@@ -426,6 +445,39 @@ h1 em {
     transform: translateY(-15px) rotate(-3deg);
   }
 }
+
+@keyframes pulse {
+  50% { box-shadow: 0 0 24px rgba(215, 250, 120, 0.95); }
+}
+
+@keyframes label-drift {
+  0%, 100% { transform: translateY(0) rotate(7deg); }
+  50% { transform: translateY(-8px) rotate(4deg); }
+}
+
+@keyframes asterisk-turn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero .intro,
+.hero h1,
+.hero-copy,
+.hero .actions,
+.hero-foot,
+.visual {
+  animation: hero-enter 700ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
+}
+
+.hero h1 { animation-delay: 90ms; }
+.hero-copy { animation-delay: 170ms; }
+.hero .actions { animation-delay: 240ms; }
+.hero-foot { animation-delay: 310ms; }
+.visual { animation-delay: 180ms; }
 
 .ticker {
   border-block: 1px solid var(--line);
@@ -521,12 +573,19 @@ h1 em {
   border-radius: var(--radius);
   transition: transform 0.3s ease, border-color 0.3s ease;
   min-width: 0;
+  animation: card-enter 650ms cubic-bezier(0.2, 0.75, 0.25, 1) both;
 }
 
 .project:hover {
   transform: translateY(-7px);
   border-color: #cbb8fff5;
 }
+
+.project:nth-child(2) { animation-delay: 70ms; }
+.project:nth-child(3) { animation-delay: 140ms; }
+.project:nth-child(4) { animation-delay: 210ms; }
+.project:nth-child(5) { animation-delay: 280ms; }
+.project:nth-child(6) { animation-delay: 350ms; }
 
 .project-art {
   height: 180px;
@@ -575,6 +634,11 @@ h1 em {
 .project-art strong {
   font-size: 55px;
   letter-spacing: -0.08em;
+  transition: transform 350ms cubic-bezier(0.2, 0.75, 0.25, 1);
+}
+
+.project:hover .project-art strong {
+  transform: scale(1.12) rotate(-5deg);
 }
 
 .project-number {
@@ -662,6 +726,13 @@ h1 em {
   border-radius: 16px;
   font-size: 14px;
   overflow-wrap: anywhere;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.profile-link:hover {
+  transform: translateY(-3px);
+  border-color: #b9a2ff70;
+  background: #ffffff05;
 }
 
 .avatar {
@@ -726,6 +797,7 @@ h1 em {
   line-height: 1;
   opacity: 0.12;
   pointer-events: none;
+  animation: asterisk-turn 24s linear infinite;
 }
 
 footer {
@@ -752,6 +824,11 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @media (min-width: 1500px) {

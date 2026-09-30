@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type PointerEvent } from 'react';
 
 type Repo = {
   name: string;
@@ -31,6 +31,31 @@ function getInitials(name: string) {
       .slice(0, 2)
       .toUpperCase() || '</>'
   );
+}
+
+function moveTitleAwayFromPointer(event: PointerEvent<HTMLHeadingElement>) {
+  if (event.pointerType !== 'mouse') return;
+
+  const title = event.currentTarget;
+  const lines = title.querySelectorAll<HTMLElement>('.title-line');
+
+  lines.forEach((line) => {
+    const bounds = line.getBoundingClientRect();
+    const dx = bounds.left + bounds.width / 2 - event.clientX;
+    const dy = bounds.top + bounds.height / 2 - event.clientY;
+    const distance = Math.max(Math.hypot(dx, dy), 1);
+    const strength = (1 - Math.min(distance / 320, 1)) * 18;
+
+    line.style.setProperty('--repel-x', `${(dx / distance) * strength}px`);
+    line.style.setProperty('--repel-y', `${(dy / distance) * strength}px`);
+  });
+}
+
+function resetTitlePosition(event: PointerEvent<HTMLHeadingElement>) {
+  event.currentTarget.querySelectorAll<HTMLElement>('.title-line').forEach((line) => {
+    line.style.setProperty('--repel-x', '0px');
+    line.style.setProperty('--repel-y', '0px');
+  });
 }
 
 function App() {
@@ -143,7 +168,6 @@ function App() {
               <line className="menu-icon-middle" x1="4" y1="12" x2="20" y2="12" />
               <line className="menu-icon-bottom" x1="4" y1="17" x2="20" y2="17" />
             </svg>
-            <span aria-hidden="true">{menuOpen ? 'Close' : 'Menu'}</span>
           </button>
 
           <div id="nav-links" className={menuOpen ? 'nav-links open' : 'nav-links'}>
@@ -169,12 +193,14 @@ function App() {
             <div className="intro">
               <span className="dot" aria-hidden="true" /> A little code. A lot of curiosity.
             </div>
-            <h1 id="hero-title">
-              Hey, I'm Aryan.
-              <br />
-              Ideas into
-              <br />
-              <em>interfaces.</em>
+            <h1
+              id="hero-title"
+              onPointerMove={moveTitleAwayFromPointer}
+              onPointerLeave={resetTitlePosition}
+            >
+              <span className="title-line">Hey, I'm Aryan.</span>
+              <span className="title-line">Ideas into</span>
+              <span className="title-line title-line-accent"><em>interfaces.</em></span>
             </h1>
             <p className="hero-copy">
               Welcome to my corner of the internet. A space for the things I build, the ideas I
